@@ -101,11 +101,11 @@ window.location.href = $(this).attr("data-url");
 <img src="https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fyellow-pages-logo.png?1502801763687" alt="yellow-pages-logo" />
 </a>
 <div class="topMenu">
-    <a class="jumper" href="#company">
-<a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
+ 
+<a href="#/addrecord" class="topMenuLink jumper" href="#company" ng-show="isLoggedIn()">Add a business</a>
   <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
-<a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
-    </a>
+<a href="/#/login" id="lnkLogin" class="topMenuLink jumper" href="#company" ng-hide="isLoggedIn()">Login</a>
+   
 </div>
 </header>
 </div>

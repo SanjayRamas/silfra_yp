@@ -135,7 +135,7 @@ window.location.href = $(this).attr("data-url");
 
  <div id="searchButtonBlock" class="searchButtonBlock">
    
-   <a href="#company">
+   <a class="jumper" href="#company">
  <span class="searchButton"><i class="searchIcon"></i></span></a>
   
   </div>
@@ -257,9 +257,10 @@ transition: transform 0.3s ease;
                             <li>
                                 <a href="#homeSearchBlock" class="mobSearch">Search business</a>
                             </li>
+                             <a class="jumper" href="#company">
                             <li id="aLogin" ng-hide="isLoggedIn()">
                                 <a href="#/login" class="mobLogin">Login</a>
-                            </li>
+                                 </li></a>
                         </ul>
                     </div>
  <div class="footerEachNavCol businessMenu" ng-hide="isLoggedIn()"><h5 class="footerHeading ypFooterHeading">New User</h5>

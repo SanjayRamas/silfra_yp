@@ -1,0 +1,437 @@
+<html>
+<head>
+  <title>Silfra Telephone Directory</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+  <script src="app.js"></script>
+  <style> 
+    @import url("//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css");
+    .glyphicon-thumbs-up { cursor:pointer } 
+    li{font-weight:bold;}
+    .search {position: relative;color: #aaa;font-size: 16px;}
+    .search input {width: 250px;height: 32px;}
+    .search .fa-search { position: absolute;top: 7px;left: 318px;color:#838383;}
+  </style>
+  <meta charset="utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<title>Silfra YellowPage</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1" />
+
+    <!-- CSS-->
+<link rel="stylesheet" href="css/style.css" />
+
+<link rel="shortcut icon" href="https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Ffavicon.png?1502801763146" type="image/png">
+
+   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.2/angular-ui-router.js"></script>
+  <script src="app.js"></script>
+  
+  <!--<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">-->
+
+<!-- JS-->
+<script src="https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fjquery.min.js?1502801780485">
+</script>
+
+  <style type="text/css">
+.searchResultList li a {
+text-decoration:none;
+width:100%;
+color:#000;
+display:block;
+}
+.eachFBImage,.eachOP,.eachPopularImage {
+cursor:pointer;
+}
+</style>
+<script type="text/javascript">
+$(document).ready(function () {
+$('.eachFBImage').on("click", function () {
+if ($(this).attr("data-url") != '')
+window.location.href = $(this).attr("data-url");
+});
+$('.eachOP').on("click", function () {
+if ($(this).attr("data-url") != '')
+window.location.href = $(this).attr("data-url");
+});
+$('.eachPopularImage').on("click", function () {
+if ($(this).attr("data-url") != '')
+window.location.href = $(this).attr("data-url");
+});           
+});</script><link rel="canonical" href="#" />
+</head>
+<body ng-app="directory" ng-controller="MainCtrl" style="background-color:#f2f1ef;" data-spy="scroll" data-target="#myScrollspy">
+  <nav class="navbar navbar-default" ng-controller="NavCtrl" style="background-color: #ffcf05;">
+    <div class="container">
+      <ul class="nav navbar-nav">
+        <li ng-show="isLoggedIn()"><a href="/#/home">Home</a></li>
+        <!--li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li-->
+        <li ng-show="isLoggedIn()"><a href="/#/addrecord">Add Business</a></li>
+         
+        <li ng-show="isLoggedIn()">
+          <div class="search">
+            <input type="text" ng-model="$parent.nameFilter" class="form-control" placeholder="Search..." style="width:200%;margin-top:7px;font-weight:normal;" />
+            <span class="fa fa-search"></span>
+          </div>
+        </li>
+        <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
+      </ul>
+      <ul class="nav navbar-nav pull-right">
+        <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
+      </ul>  
+    </div>
+  </nav>
+  
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__VSTATE" id="__VSTATE" value="H4sIAAAAAAAEAPvPyJ/Cz8ppaGhgYGJoZm6RAgCKWwFDEQAAAA==" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="" />
+</div>
+    
+    <div class="scrollToTop">Scroll Top</div>
+<div class="main" id="main">
+<div class="container homeHeader">
+<div class="wrapper">
+<header class="headerBlock">
+<div class="mobileMenu">Silfra YellowPage</div>
+<a href="/" class="branding">
+<img src="https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fyellow-pages-logo.png?1502801763687" alt="yellow-pages-logo" />
+</a>
+<div class="topMenu">
+<a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
+  <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
+<a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
+
+</div>
+</header>
+</div>
+</div>
+<div class="home-banner container">
+<div class="wrapper">
+<div class="searchBlock">
+<h1 class="searchTitle">Best Website for listing local business underway...</h1>
+<div class="searchInputBlock">
+<div class="homeSearchBlock" id="homeSearchBlock">
+<div class="searchFullBlock">
+ <div class="searchLocation">
+ <input name="ipLocation" type="text" id="ipLocation" class="homeSearchTextbox locationInputField" value="" />
+ <div class="searchResult activeSearchTextbox" id="divLoc">
+ </div>
+ </div>
+ <div class="searchBusiness">
+ <input type="text" ng-model="$parent.nameFilter" value="" id="ipSearch" class="homeSearchTextbox businessInputField" placeholder="Search local business in India" />
+ <div class="searchResult activeSearchTextbox" id="divRes">
+   <!--<<ul class="searchResultList">
+     <li class="sresult">
+   ui-view></ui-view>
+     </li>
+   </ul>-->
+  
+ </div> 
+ </div>
+  
+
+ <div id="searchButtonBlock" class="searchButtonBlock">
+   
+   <a class="jumper" href="#company">
+ <span class="searchButton"><i class="searchIcon"></i></span></a>
+  
+  </div>
+    </div>
+    </div></div></div></div>
+    <div class="homeCategoriesBlock">
+        <div class="wrapper">
+            <ul id="ulCats" class="homeCategoriesList">
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fapparels-and-accessories.png?1502801719508)'>
+                        </div>
+                        <div class='eachCategoryname'>Apparels & Accessories</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Ffood-and-beverages.png?1502801719859)'></div>
+                        <div class='eachCategoryname'>Food & Beverages</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fbeauty-and-wellness.png?1502801719732)'></div>
+                        <div class='eachCategoryname'>Beauty & Wellness</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Feducation.png?1502801719830)'></div>
+                        <div class='eachCategoryname'>Education</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fhealth.png?1502801720021)'></div>
+                        <div class='eachCategoryname'>Health</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fwedding-and-events.png?1502801720753)'></div>
+                        <div class='eachCategoryname'>Wedding & Events</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Flogistics-services.png?1502801720294)'></div>
+                        <div class='eachCategoryname'>Logistics Services</div>
+                    </a>
+                </li>
+                <li>
+                    <a href='#' class='eachHomeCategory'>
+                        <div class='eachCategoryIcon' style='background-image:url(https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fprinting-and-stationaries.png?1502801720527)'></div>
+                        <div class='eachCategoryname'>Others</div>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </div>
+    <script>
+$(document).ready(function () {
+var dw = $(window).width();
+var fl = $('.homeFBList').width() - $(window).width() + 15;
+var flr = $('.homeFBList').width() + $(window).width() + 15
+var g = 0;
+var l = 0;
+$('#rightBtn').click(function () {
+l = $(window).width() + g;
+g = l;
+if (g > fl) {
+l = fl + 15;
+}
+l = "-" + l + "px";
+$('.homeFBList').css({
+'-webkit-transform': 'translateX(' + l + ')',
+'-moz-transform': 'translateX(' + l + ')',
+'transform': 'translateX(' + l + ')'
+});
+});
+$('#leftBtn').click(function () {
+l = $(window).width() - g;
+g = l;
+console.log(g);
+if (g > 0) {
+l = 0;
+}
+l = l + "px";
+//console.log(l);
+$('.homeFBList').css({
+'-webkit-transform': 'translateX(' + l + ')',
+'-moz-transform': 'translateX(' + l + ')',
+'transform': 'translateX(' + l + ')'
+});
+});
+});</script><style>.homeFBList {
+-webkit-transition: transform 0.3s ease;
+-o-transition: transform 0.3s ease;
+transition: transform 0.3s ease;
+}
+</style>
+  <div  class="row">
+    <div class="col-md-7 col-md-offset-1" id="company">
+      <ui-view></ui-view>
+    </div>
+  </div>
+  
+  <div class="container footer">
+        <div class="wrapper">
+            <div class="footerNavBlocks mobHide">
+                <div class="mobileNavBlocks">
+                    <div class="footerEachNavCol">
+                        <h5 class="footerHeading">Quick links</h5>
+                        <ul class="footerNavList">
+                            <li class="" >
+                                <a href="/" class="mobHome">Home</a>
+                            </li>
+                            <li>
+                                <a href="#homeSearchBlock" class="mobSearch">Search business</a>
+                            </li>
+                            <li id="aLogin" ng-hide="isLoggedIn()">
+                                <a href="#/login" class="mobLogin">Login</a>
+                            </li>
+                        </ul>
+                    </div>
+ <div class="footerEachNavCol businessMenu" ng-hide="isLoggedIn()"><h5 class="footerHeading ypFooterHeading">New User</h5>
+                        <ul class="footerNavList" >
+                            <li class="" ><a class="mobLogin" href="#/register">Register</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="footerEachNavCol businessMenu" ng-show="isLoggedIn()"><h5 class="footerHeading ypFooterHeading">Business</h5>
+                        <ul class="footerNavList">
+                            <li class="" ><a class="mobAddBusiness" href="#/addrecord">Add your business</a>
+                            </li>
+                        </ul>
+                    </div>
+                   
+                  
+                  
+                </div>
+                
+                <div class="footerSocialMobile">
+                    <div class="footerEachNavCol">
+                        <h5 class="footerHeading">Mobile &amp; Social</h5>
+                        <div class="footerNavList">
+                            <div class="footerSocialLinks">
+                                <span class="footerSocialMobTitle">Connect with us</span>
+                                <a target="_blank" href="#" class="footFacebook">Facebook</a>
+                                <a target="_blank" href="#" class="footTwitter">Twitter</a>
+                                <a target="_blank" href="#" class="footGooglePlus">Google Plus</a>
+                                <a target="_blank" href="#" class="footYouTube">You Tube</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  
+  <div class="container copyRights">
+        <div class="wrapper">Copyright &copy; 2017, Silfra YellowPage</div>
+    </div>
+    
+    <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600,700,300' rel='stylesheet' type='text/css' />
+    
+    <script type="text/javascript">
+$(document).ready(function () {            
+$('.haveSubMenu').click(function () {
+$('.subMenuInner').toggleClass('showSubMenu');
+});
+});</script><script>$(document).ready(function () {
+$('.opFavClick').click(function () {
+if ($(this).hasClass('activeFavIcon')) {
+$(this).removeClass('activeFavIcon');
+} else {
+$(this).addClass('activeFavIcon');
+}
+});
+var inp = $(this).find('.opFavInput');
+$('.opFavLabel').click(function () {
+if ($(inp).is(':checked')) {
+console.log($(this));
+$(this).find('.opFavText').text('Favorited');
+} else {
+$(this).find('.opFavText').text('Add to Favorite');
+}
+})
+});</script><script>$(document).ready(function () {
+$('.homeFBList').slick({
+slidesToShow: 6,
+slidesToScroll: 2,
+infinite: false,
+responsive: [{
+breakpoint: 1920,
+settings: {
+slidesToShow: 5,
+slidesToScroll: 4,
+dots: false,
+arrows: true
+}
+}, {
+breakpoint: 1120,
+settings: {
+arrows: true,
+dots: false,
+slidesToShow: 4,
+slidesToScroll: 3
+}
+}, {
+breakpoint: 920,
+settings: {
+arrows: true,
+dots: false,
+slidesToShow: 3,
+slidesToScroll: 2
+}
+}, {
+breakpoint: 768,
+settings: {
+arrows: true,
+dots: false,
+slidesToShow: 2,
+slidesToScroll: 2
+}
+}, {
+breakpoint: 500,
+settings: {
+arrows: true,
+dots: false,
+slidesToShow: 2,
+slidesToScroll: 2
+}
+}, {
+breakpoint: 499,
+settings: {
+arrows: true,
+dots: false,
+slidesToShow: 1,
+slidesToScroll: 1
+}
+}]
+});
+$(document).on('click', 'div.closeNotification', function () {
+/*$('.notification').remove();*/
+setTimeout(function () {
+$('.notification').removeClass('showNotification');
+}, 100);
+setTimeout(function () {
+$('.notification').remove();
+}, 800);
+});
+});
+function autoRemove() {
+setTimeout(function () {
+$('.notification').removeClass('showNotification');
+}, 5000);
+setTimeout(function () {
+$('.notification').remove();
+}, 5500);
+}
+</script>
+
+    <script>(function (i, s, o, g, r, a, m) {
+i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+(i[r].q = i[r].q || []).push(arguments)
+}, i[r].l = 1 * new Date(); a = s.createElement(o),
+m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+})(window, document, 'script', 'https://www.google-analytics.com/analytics.js', 'ga');
+ga('create', 'UA-72946436-1', 'auto');
+ga('send', 'pageview');
+  </script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript">
+    
+ $(document).ready(function() {
+  $(".jumper").on("click", function( e ) {
+
+    e.preventDefault();
+
+    $("body, html").animate({ 
+      scrollTop: $( $(this).attr('href') ).offset().top 
+    }, 600);
+
+  });
+});
+    
+  </script>
+  <input name="bId" type="hidden" id="bId" class="bId" />
+  <input name="hdnVal" type="hidden" id="hdnVal" value="0" />
+  <input type="hidden" id="conVal"/>
+  <input name="lct" type="hidden" id="lct" value="" />
+  <div class="aspNetHidden">
+  <input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="/wEdAAavVXD1oYELeveMr0vHCmYPPvD90pppVTdY0LFK7XfCiVdz5U6TWETPdA897FG3iKwzoymlHHRJJ/zwbcCHI4Z2paR6F1ULYlFLJdsdVHnuJzqt/olo7N4OO0jBbxGfW4AGIguvqoFCxkMY+1g1pazj5Od3URMOXSKlQyfceOxNfg==" />
+  </div>
+  
+</body>
+</html>

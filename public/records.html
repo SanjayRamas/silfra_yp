@@ -1,0 +1,62 @@
+<div class="page-header">
+
+
+    <div>
+      <h1>
+        {{record.bizname}}
+      </h1>
+    </div>
+    <ul class="nav nav-pills" role="tablist">
+        <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Address</a></li>
+        <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Reviews</a></li>
+    </ul>
+    <div class="tab-content">
+      <div  ng-show="isSet(1)" style="margin-top:10px">
+        <div>
+        {{record.address}}
+        </div>
+        <div>
+        <a href="mailto:{{record.email}}">{{record.email}}</a>
+        </div>
+        <div>
+        {{record.phone}}
+        </div>
+        <div>
+        {{record.category}}
+        </div>
+      </div>
+      <div ng-show="isSet(2)" style="margin-top:10px">
+        <div ng-repeat="comment in record.comments | orderBy:'-upVotes'">
+          <span class="glyphicon glyphicon-thumbs-up"
+                ng-click="incrementUpvotes(comment)"></span>
+          {{comment.upvotes}} - by {{comment.author}}
+          <span style="font-size:20px; margin-left: 10px;">
+            {{comment.body}}
+          </span>
+
+        </div>
+
+        <form ng-submit="addComment()"
+              ng-show="isLoggedIn()"
+                style= "margin-top: 30px;">
+            <h3>Add a new review comment:</h3>
+
+            <div class="form-group">
+              <input type="text"
+                     class="form-control"
+                     placeholder="Comment"
+                     ng-model="body">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+
+</div>
+
+<div ng-hide="isLoggedIn()">
+  <h3>You need to <a href="/#/login">Log In</a> or <a href="/#/register">Register</a> before you can comment.</h3>
+</div>
+<style>
+.innerHeader{position:relative;z-index:6;background-color:#ffcf05}
+</style>

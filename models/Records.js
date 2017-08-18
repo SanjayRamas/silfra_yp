@@ -6,6 +6,8 @@ var RecordSchema = new mongoose.Schema({
   email: String,
   phone: String,
   category: String,
+  url: String,
+  logo: String,
   upvotes: {type: Number, default: 0},
   comments: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Comment' }]
 });

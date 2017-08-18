@@ -191,13 +191,17 @@ app.controller('MainCtrl', [
           address: $scope.address,
           email: $scope.email,
           phone: $scope.phone,
-          category: $scope.category
+          category: $scope.category,
+          url: $scope.url,
+          logo: $scope.logo
         });
       $scope.bizname="";
       $scope.address="";  
       $scope.email="";
       $scope.phone="";  
-      $scope.category="";  
+      $scope.category="";
+        $scope.url="";  
+        $scope.logo="";  
     }
     
     $scope.incrementUpvote = function (record) {

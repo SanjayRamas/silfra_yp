@@ -2,13 +2,17 @@
 
 
     <div>
-      <h1>
-        {{record.bizname}}
+       <h1>
+        <a href="{{record.url}}" style="text-decoration:none">{{record.bizname}}</a>
+        &nbsp
+        <img src="{{record.logo}}" width="50px" height="50px"/>
       </h1>
     </div>
     <ul class="nav nav-pills" role="tablist">
         <li ng-class="{ active: isSet(1) }"><a href ng-click="setTab(1)">Address</a></li>
         <li ng-class="{ active: isSet(2) }"><a href ng-click="setTab(2)">Reviews</a></li>
+        <li ng-show="isLoggedIn()" ng-class="{ active: isSet(3) }"><a href ng-click="setTab(3)">Edit</a></li>
+      <li ng-show="isLoggedIn()" ng-class="{ active: isSet(4) }"><a href ng-click="deleteRecord(record)">Delete</a></li>
     </ul>
     <div class="tab-content">
       <div  ng-show="isSet(1)" style="margin-top:10px">
@@ -50,6 +54,61 @@
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
       </div>
+        
+         <div ng-show="isSet(3)" style="margin-top:10px">
+        
+        <!--<br> {{record.email}} <br>  {{record.phone}} <br> {{record.category}} <br> {{record.url}}   -->     
+        <h3>Edit existing details:</h3>
+        <label>Address:</label><a><span ng-hide="editing" ng-click="editing = true"> {{record.address}}</span></a>
+                  <form ng-show="editing" ng-submit="editing = false">
+                    <input type="text" ng-model="record.address" placeholder="Enter new address" ng-required/>
+                    <br/>
+                    <button class="btn" type="submit">Save</button>
+                    <button class="btn">Cancel</button>
+                  </form>
+            <br>
+        <label>Email:</label><a><span ng-hide="editing1" ng-click="editing1 = true"> {{record.email}}</span></a>
+                  <form ng-show="editing1" ng-submit="editing1 = false">                   
+                    <input type="text" ng-model="record.email" placeholder="Enter new email" ng-required/>
+                    <br/>
+                    <button class="btn" type="submit">Save</button>
+                  <button class="btn">Cancel</button>
+
+                  </form>
+        <br>
+        <label>Phone:</label><a><span ng-hide="editing2" ng-click="editing2 = true"> {{record.phone}}</span></a>
+                  <form ng-show="editing2" ng-submit="editing2 = false">                    
+                    <input type="text" ng-model="record.phone" placeholder="Enter new phone" ng-required/>
+                    <br/>
+                    <button class="btn" type="submit">Save</button>
+                                        <button class="btn">Cancel</button>
+
+                  </form>
+        <br>
+        <label>Category:</label><a><span ng-hide="editing3" ng-click="editing3 = true"> {{record.category}}</span></a>
+                  <form ng-show="editing3" ng-submit="editing3 = false">                    
+                    <input type="text" ng-model="record.category" placeholder="Enter new category" ng-required/>
+                    <br/>
+                    <button class="btn" type="submit">Save</button>
+                                        <button class="btn">Cancel</button>
+
+                  </form>
+        <br>
+       <label>URL:</label> <a><span ng-hide="editing4" ng-click="editing4 = true"> {{record.url}}</span></a>
+                  <form ng-show="editing4" ng-submit="editing4 = false">                    
+                    <input type="text" ng-model="record.url" placeholder="Enter new url" ng-required/>
+                    <br/>
+                    <button class="btn" type="submit">Save</button>
+                                        <button class="btn">Cancel</button>
+
+                  </form>
+                
+                
+           
+       
+        
+      </div>
+        
     </div>
 
 </div>

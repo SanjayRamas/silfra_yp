@@ -61,11 +61,11 @@ window.location.href = $(this).attr("data-url");
 });</script><link rel="canonical" href="#" />
 </head>
 <body ng-app="directory" ng-controller="MainCtrl" style="background-color:#f2f1ef;" data-spy="scroll" data-target="#myScrollspy">
-  <nav class="navbar navbar-default" ng-controller="NavCtrl" style="background-color: #ffcf05;">
+  <!--<nav class="navbar navbar-default" ng-controller="NavCtrl" style="background-color: #ffcf05;">
     <div class="container">
       <ul class="nav navbar-nav">
         <li ng-show="isLoggedIn()"><a href="/#/home">Home</a></li>
-        <!--li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li-->
+        li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li
         <li ng-show="isLoggedIn()"><a href="/#/addrecord">Add Business</a></li>
          
         <li ng-show="isLoggedIn()">
@@ -81,7 +81,7 @@ window.location.href = $(this).attr("data-url");
         <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
       </ul>  
     </div>
-  </nav>
+  </nav>-->
   
 <div class="aspNetHidden">
 <input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
@@ -99,13 +99,12 @@ window.location.href = $(this).attr("data-url");
 <a href="/" class="branding">
 <img src="https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fyellow-pages-logo.png?1502801763687" alt="yellow-pages-logo" />
 </a>
-<div class="topMenu">
+<div class="topMenu" ng-controller="NavCtrl">
 <a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
   <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
 <a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
-<ul class="nav navbar-nav pull-right">
-        <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
-      </ul> 
+<a href="" class="topMenuLink" ng-show="isLoggedIn()" ng-click="logout()">Log Out</a>
+     
 </div>
 </header>
 </div>

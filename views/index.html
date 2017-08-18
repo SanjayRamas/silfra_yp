@@ -66,7 +66,7 @@ window.location.href = $(this).attr("data-url");
       <ul class="nav navbar-nav">
         <li ng-show="isLoggedIn()"><a href="/#/home">Home</a></li>
         <!--li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li-->
-        <li ng-show="isLoggedIn()"><a class="jumper4" href="/#/addrecord">Add Business</a></li>
+        <li ng-show="isLoggedIn()"><a class="jumper" href="/#/addrecord">Add Business</a></li>
          
         <li ng-show="isLoggedIn()">
           <div class="search">
@@ -75,7 +75,7 @@ window.location.href = $(this).attr("data-url");
           </div>
         </li>
         <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
-        <li ng-hide="isLoggedIn()"><a class= "jumper3" href="/#/register">Register</a></li>
+        <li ng-hide="isLoggedIn()"><a class= "jumper" href="/#/register">Register</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
@@ -258,7 +258,7 @@ transition: transform 0.3s ease;
                                 <a href="#homeSearchBlock" class="mobSearch">Search business</a>
                             </li>
                             <li id="aLogin" ng-hide="isLoggedIn()">
-                                <a class ="jumper2" href="#/login" class="mobLogin">Login</a>
+                                <a class ="jumper" href="#/login" class="mobLogin">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -413,7 +413,7 @@ ga('send', 'pageview');
   <script type="text/javascript">
     
  $(document).ready(function() {
-  $(".jumper,.jumper2,jumper3,jumper4").on("click", function( e ) {
+  $(".jumper").on("click", function( e ) {
 
     e.preventDefault();
 

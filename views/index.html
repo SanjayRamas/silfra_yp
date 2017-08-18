@@ -66,7 +66,7 @@ window.location.href = $(this).attr("data-url");
       <ul class="nav navbar-nav">
         <li ng-show="isLoggedIn()"><a href="/#/home">Home</a></li>
         <!--li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li-->
-        <li ng-show="isLoggedIn()"><a class="jumper" href="/#/addrecord">Add Business</a></li>
+        <li ng-show="isLoggedIn()"><a class="jumper4" href="/#/addrecord">Add Business</a></li>
          
         <li ng-show="isLoggedIn()">
           <div class="search">
@@ -74,9 +74,8 @@ window.location.href = $(this).attr("data-url");
             <span class="fa fa-search"></span>
           </div>
         </li>
-          <a class="jumper" href="#company">
-              <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li></a>
-        <li ng-hide="isLoggedIn()"><a class= "jumper" href="/#/register">Register</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
+        <li ng-hide="isLoggedIn()"><a class= "jumper3" href="/#/register">Register</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
@@ -101,11 +100,10 @@ window.location.href = $(this).attr("data-url");
 <img src="https://cdn.glitch.com/20257a55-c128-4c5b-bb35-a18754c69423%2Fyellow-pages-logo.png?1502801763687" alt="yellow-pages-logo" />
 </a>
 <div class="topMenu">
- 
-<a href="#/addrecord" class="topMenuLink jumper" href="#company" ng-show="isLoggedIn()">Add a business</a>
+<a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
   <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
-<a href="/#/login" id="lnkLogin" class="topMenuLink jumper" href="#company" ng-hide="isLoggedIn()">Login</a>
-   
+<a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
+
 </div>
 </header>
 </div>
@@ -137,7 +135,7 @@ window.location.href = $(this).attr("data-url");
 
  <div id="searchButtonBlock" class="searchButtonBlock">
    
-   <a class="jumper" href="#company">
+   <a class="jumper">
  <span class="searchButton"><i class="searchIcon"></i></span></a>
   
   </div>
@@ -259,10 +257,9 @@ transition: transform 0.3s ease;
                             <li>
                                 <a href="#homeSearchBlock" class="mobSearch">Search business</a>
                             </li>
-                             
                             <li id="aLogin" ng-hide="isLoggedIn()">
-                                <a href="#/login" class="mobLogin">Login</a>
-                                 </li>
+                                <a class ="jumper2" href="#/login" class="mobLogin">Login</a>
+                            </li>
                         </ul>
                     </div>
  <div class="footerEachNavCol businessMenu" ng-hide="isLoggedIn()"><h5 class="footerHeading ypFooterHeading">New User</h5>

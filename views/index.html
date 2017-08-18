@@ -103,7 +103,9 @@ window.location.href = $(this).attr("data-url");
 <a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
   <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
 <a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
-
+<ul class="nav navbar-nav pull-right">
+        <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
+      </ul> 
 </div>
 </header>
 </div>

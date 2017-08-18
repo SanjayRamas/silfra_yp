@@ -66,7 +66,7 @@ window.location.href = $(this).attr("data-url");
       <ul class="nav navbar-nav">
         <li ng-show="isLoggedIn()"><a href="/#/home">Home</a></li>
         <!--li ng-show="isLoggedIn()"><a>{{ currentUser() }}</a></li-->
-        <li ng-show="isLoggedIn()"><a class="jumper4" href="/#/addrecord">Add Business</a></li>
+        <li ng-show="isLoggedIn()"><a href="/#/addrecord">Add Business</a></li>
          
         <li ng-show="isLoggedIn()">
           <div class="search">
@@ -75,7 +75,7 @@ window.location.href = $(this).attr("data-url");
           </div>
         </li>
         <li ng-hide="isLoggedIn()"><a href="/#/login">Log In</a></li>
-        <li ng-hide="isLoggedIn()"><a class= "jumper2" href="/#/register">Register</a></li>
+        <li ng-hide="isLoggedIn()"><a href="/#/register">Register</a></li>
       </ul>
       <ul class="nav navbar-nav pull-right">
         <li ng-show="isLoggedIn()"><a href="" ng-click="logout()">Log Out</a></li>
@@ -102,7 +102,7 @@ window.location.href = $(this).attr("data-url");
 <div class="topMenu">
 <a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
   <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
-<a href="/#/login" id="lnkLogin" class="topMenuLink jumper2" ng-hide="isLoggedIn()">Login</a>
+<a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
 
 </div>
 </header>
@@ -258,7 +258,7 @@ transition: transform 0.3s ease;
                                 <a href="#homeSearchBlock" class="mobSearch">Search business</a>
                             </li>
                             <li id="aLogin" ng-hide="isLoggedIn()">
-                                <a class ="jumper2" href="#/login" class="mobLogin">Login</a>
+                                <a href="#/login" class="mobLogin">Login</a>
                             </li>
                         </ul>
                     </div>
@@ -424,15 +424,7 @@ ga('send', 'pageview');
   });
 });
       
-      $(document).ready(function() {
-  $(".jumper2").on("click", function( e ) {
-
-    e.preventDefault();
-$('html, body').animate({scrollTop: '+=150px'}, 600);
     
-
-  });
-});
     
   </script>
   <input name="bId" type="hidden" id="bId" class="bId" />

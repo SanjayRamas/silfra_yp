@@ -102,7 +102,7 @@ window.location.href = $(this).attr("data-url");
 <div class="topMenu">
 <a href="#/addrecord" class="topMenuLink" ng-show="isLoggedIn()">Add a business</a>
   <a href="/#/register" id="lnkregister" class="topMenuLink" ng-hide="isLoggedIn()">Register</a>
-<a href="/#/login" id="lnkLogin" class="topMenuLink" ng-hide="isLoggedIn()">Login</a>
+<a href="/#/login" id="lnkLogin" class="topMenuLink jumper2" ng-hide="isLoggedIn()">Login</a>
 
 </div>
 </header>
@@ -135,7 +135,7 @@ window.location.href = $(this).attr("data-url");
 
  <div id="searchButtonBlock" class="searchButtonBlock">
    
-   <a class="jumper">
+   <a class="jumper" href="#company">
  <span class="searchButton"><i class="searchIcon"></i></span></a>
   
   </div>
@@ -420,6 +420,16 @@ ga('send', 'pageview');
     $("body, html").animate({ 
       scrollTop: $( $(this).attr('href') ).offset().top 
     }, 600);
+
+  });
+});
+      
+      $(document).ready(function() {
+  $(".jumper2").on("click", function( e ) {
+
+    e.preventDefault();
+$('html, body').animate({scrollTop: '+=150px'}, 600);
+    
 
   });
 });
